@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Chemistry Lesson</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/474x/14/b7/67/14b76706c0600f544b05cc29d6851e35.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #36454F;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            border: 2px solid #36454F;
+        }
+
+        h1 {
+            text-align: center;
+            color: #36454F;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #6A5ACD;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #483D8B;
+        }
+
+        .interactive-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(240, 240, 245, 0.9);
+            border-radius: 8px;
+            border: 1px solid #36454F;
+        }
+
+        .interactive-section textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #6A5ACD;
+            border-radius: 4px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            background-color: #6A5ACD;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="container">
+        <h1>Request for Chemistry Lesson</h1>
+        <p>Dear Professor,</p>
+        <p>I hope this message finds you well. I kindly request your help to explain the chemistry lesson from last week, which I missed due to travel. Understanding this material is crucial as I have a test on Friday. Your support would mean a lot to me.</p>
+
+        <div class="button-container">
+            <button onclick="showNextPage()">Yes, Continue</button>
+        </div>
+    </div>
+
+    <div id="page2" class="container hidden">
+        <h1>Provide Your Response</h1>
+        <p>Thank you for considering my request. Please write your response below. Once you submit, it will be prepared for WhatsApp.</p>
+
+        <div class="interactive-section">
+            <textarea rows="4" placeholder="Your Response" id="response"></textarea>
+            <button onclick="submitResponse()">Submit Response</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Thank you for your time and understanding. I truly appreciate it.</p>
+    </footer>
+
+    <script>
+        function showNextPage() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+
+        function submitResponse() {
+            const response = document.getElementById('response').value.trim();
+
+            if (response) {
+                // Encode the message for the URL
+                const encodedMessage = encodeURIComponent(response);
+                const whatsappURL = `https://wa.me/+212643822721?text=${encodedMessage}`; // Replace with your WhatsApp number
+                
+                // Open WhatsApp with the pre-filled message
+                window.open(whatsappURL, '_blank');
+            } else {
+                alert('Please write a response before submitting.');
+            }
+        }
+    </script>
+</body>
+</html>
